@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071426">
+    <meta name="description" content="Cyber Detective - Media pembelajaran interaktif Informatika kelas VIII tentang Jaringan Komputer dan Keamanan Internet.">
+
+    <title>Cyber Detective | Digital Investigation</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="background-effects">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <header class="topbar" id="topbar">
+        <div class="brand" onclick="showPage('welcome')">
+            <div class="brand-icon">⌕</div>
+            <div>
+                <h2>CYBER<span>DETECTIVE</span></h2>
+                <small>INFORMATICS LEARNING SYSTEM</small>
+            </div>
+        </div>
+
+        <div class="topbar-right">
+            <div class="save-indicator">
+                <span class="save-dot"></span>
+                <span>Progress tersimpan</span>
+            </div>
+
+            <button class="menu-button" id="menuButton" aria-label="Buka menu" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-label">MAIN NAVIGATION</div>
+
+        <button class="nav-item active" data-page="welcome" onclick="showPage('welcome')">
+            <span>⌂</span> Beranda
+        </button>
+
+        <button class="nav-item" data-page="instructions" onclick="showPage('instructions')">
+            <span>▤</span> Petunjuk Belajar
+        </button>
+
+        <button class="nav-item" data-page="diagnostic" onclick="openDiagnostic()">
+            <span>◈</span> Tes Diagnostik
+        </button>
+
+        <button class="nav-item" data-page="hub" onclick="showPage('hub')">
+            <span>▦</span> Mission Hub
+        </button>
+
+        <div class="sidebar-divider"></div>
+
+        <div class="sidebar-label">INVESTIGATION MISSIONS</div>
+
+        <button class="nav-item" onclick="openMission(0)">
+            <span>01</span> Network Identification
+        </button>
+
+        <button class="nav-item" onclick="openMission(1)">
+            <span>02</span> Network Connection
+        </button>
+
+        <button class="nav-item" onclick="openMission(2)">
+            <span>03</span> Phishing Investigation
+        </button>
+
+        <button class="nav-item" onclick="openMission(3)">
+            <span>04</span> Digital Protection
+        </button>
+
+        <div class="sidebar-divider"></div>
+
+        <button class="nav-item" data-page="final" onclick="openFinalEvaluation()">
+            <span>★</span> Evaluasi Akhir
+        </button>
+
+        <div class="sidebar-bottom">
+            <div class="agent-card">
+                <div class="agent-avatar">🕵️</div>
+                <div>
+                    <strong>Junior Agent</strong>
+                    <small id="sidebarLevel">Belum memilih jalur</small>
+                </div>
+            </div>
+
+            <button class="nav-item reset-button" onclick="resetProgress()">
+                <span>↻</span> Ulangi Pembelajaran
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <!-- WELCOME PAGE -->
+        <section class="page active" id="welcome">
+
+            <div class="hero-section">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+                        <span class="pulse-dot"></span>
+                        DIGITAL INVESTIGATION PROJECT
+                    </div>
+
+                    <h1>
+                        WELCOME,<br>
+                        <span class="gradient-text">CYBER DETECTIVE.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Dunia digital membutuhkan seorang penyelidik.
+                        Temukan bagaimana jaringan komputer bekerja,
+                        selidiki pesan mencurigakan, dan pelajari cara
+                        melindungi identitas digital melalui empat misi
+                        investigasi interaktif.
+                    </p>
+
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" onclick="showPage('instructions')">
+                            Mulai Investigasi <span>→</span>
+                        </button>
+
+                        <button class="btn btn-outline" onclick="showPage('instructions')">
+                            Pelajari Petunjuk
+                        </button>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div>
+                            <strong>04</strong>
+                            <span>MISI</span>
+                        </div>
+                        <div>
+                            <strong>03</strong>
+                            <span>JALUR BELAJAR</span>
+                        </div>
+                        <div>
+                            <strong>01</strong>
+                            <span>FINAL CASE</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="hero-visual">
+
+                    <div class="radar-circle">
+                        <div class="radar-ring ring-one"></div>
+                        <div class="radar-ring ring-two"></div>
+                        <div class="radar-ring ring-three"></div>
+                        <div class="radar-sweep"></div>
+
+                        <div class="radar-center">⌕</div>
+
+                        <div class="radar-point point-one"></div>
+                        <div class="radar-point point-two"></div>
+                        <div class="radar-point point-three"></div>
+
+                        <div class="radar-label radar-label-one">
+                            <span class="status-online"></span>
+                            NETWORK
+                        </div>
+
+                        <div class="radar-label radar-label-two">
+                            SECURITY
+                        </div>
+                    </div>
+
+                    <div class="floating-card card-top">
+                        <span>◈</span>
+                        <div>
+                            <strong>System Online</strong>
+                            <small>Investigation Ready</small>
+                        </div>
+                    </div>
+
+                    <div class="floating-card card-bottom">
+                        <span>⌁</span>
+                        <div>
+                            <strong>4 Missions</strong>
+                            <small>Awaiting Your Action</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="welcome-bottom">
+                <span>01 / INTRODUCTION</span>
+                <span>LEARN • INVESTIGATE • PROTECT</span>
+            </div>
+
+        </section>
+
+        <!-- INSTRUCTION PAGE -->
+        <section class="page" id="instructions">
+
+            <div class="page-heading">
+                <div class="eyebrow">START YOUR JOURNEY</div>
+                <h1>Petunjuk <span class="gradient-text">Belajar</span></h1>
+                <p>Kenali sistem pembelajaran sebelum memulai investigasi.</p>
+            </div>
+
+            <div class="instruction-grid">
+
+                <div class="info-card">
+                    <div class="info-icon">🎯</div>
+                    <h3>Tujuan Pembelajaran</h3>
+                    <p>Setelah mengikuti pembelajaran, kamu diharapkan mampu:</p>
+                    <ul>
+                        <li>Mengidentifikasi minimal empat perangkat jaringan dan fungsinya.</li>
+                        <li>Menjelaskan hubungan perangkat serta membedakan koneksi kabel dan nirkabel.</li>
+                        <li>Mengenali ciri phishing dan risikonya terhadap data pribadi.</li>
+                        <li>Menentukan tindakan perlindungan akun, data pribadi, dan identitas digital.</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🕹️</div>
+                    <h3>Cara Bermain</h3>
+                    <ul>
+                        <li>Baca materi sebelum mengerjakan aktivitas.</li>
+                        <li>Jawab pertanyaan atau selesaikan tantangan.</li>
+                        <li>Perhatikan umpan balik setiap jawaban.</li>
+                        <li>Ulangi aktivitas jika belum berhasil.</li>
+                        <li>Selesaikan seluruh empat misi.</li>
+                        <li>Kerjakan evaluasi akhir dan refleksi.</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🧠</div>
+                    <h3>Jalur Belajar</h3>
+                    <p>Terdapat tiga jalur belajar berdasarkan rekomendasi hasil diagnostik.</p>
+                    <ul>
+                        <li>Junior Detective: bantuan dan petunjuk lebih lengkap.</li>
+                        <li>Network Investigator: panduan bertahap.</li>
+                        <li>Cyber Analyst: tantangan analisis mandiri.</li>
+                    </ul>
+                    <p class="small-note">
+                        Jalur dapat diganti kapan saja sesuai kebutuhan belajarmu.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🏆</div>
+                    <h3>Aturan Investigasi</h3>
+                    <ul>
+                        <li>Kerjakan setiap aktivitas dengan teliti.</li>
+                        <li>Pahami alasan di balik jawaban.</li>
+                        <li>Gunakan tombol bantuan jika diperlukan.</li>
+                        <li>Seluruh misi harus diselesaikan sebelum evaluasi akhir.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="learning-path-preview">
+                <h3>Learning Journey</h3>
+                <div class="journey-steps">
+                    <div class="journey-step"><span>01</span> Diagnostik</div>
+                    <div class="journey-line"></div>
+                    <div class="journey-step"><span>02</span> Rekomendasi</div>
+                    <div class="journey-line"></div>
+                    <div class="journey-step"><span>03</span> Empat Misi</div>
+                    <div class="journey-line"></div>
+                    <div class="journey-step"><span>04</span> Evaluasi</div>
+                </div>
+            </div>
+
+            <div class="page-actions">
+                <button class="btn btn-primary" onclick="startDiagnostic()">
+                    Mulai Tes Diagnostik →
+                </button>
+            </div>
+
+        </section>
+
+        <!-- DIAGNOSTIC PAGE -->
+        <section class="page" id="diagnostic">
+
+            <div class="page-heading">
+                <div class="eyebrow">INITIAL ASSESSMENT</div>
+                <h1>Tes <span class="gradient-text">Diagnostik</span></h1>
+                <p>Jawab tiga pertanyaan berikut untuk memperoleh rekomendasi jalur belajar.</p>
+            </div>
+
+            <div class="assessment-wrapper">
+
+                <div class="assessment-top">
+                    <span id="diagnosticCounter">PERTANYAAN 01 / 03</span>
+                    <span id="diagnosticProgressText">0% selesai</span>
+                </div>
+
+                <div class="progress-track">
+                    <div class="progress-fill" id="diagnosticProgress"></div>
+                </div>
+
+                <div class="question-card" id="diagnosticQuestionCard">
+
+                    <div class="question-number" id="diagnosticNumber">QUESTION 01</div>
+
+                    <h2 id="diagnosticQuestion">Pertanyaan akan ditampilkan di sini.</h2>
+
+                    <div class="answer-options" id="diagnosticOptions"></div>
+
+                    <div class="feedback-box" id="diagnosticFeedback" hidden></div>
+
+                    <div class="question-actions">
+                        <button class="btn btn-outline" id="diagnosticBack" onclick="previousDiagnostic()">
+                            ← Sebelumnya
+                        </button>
+
+                        <button class="btn btn-primary" id="diagnosticNext" onclick="nextDiagnostic()" disabled>
+                            Selanjutnya →
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RESULT PAGE -->
+        <section class="page" id="result">
+
+            <div class="page-heading">
+                <div class="eyebrow">DIAGNOSTIC REPORT</div>
+                <h1>Investigation <span class="gradient-text">Report</span></h1>
+                <p>Berikut hasil tes awal dan rekomendasi jalur belajarmu.</p>
+            </div>
+
+            <div class="result-card">
+
+                <div class="result-score">
+                    <div class="score-circle">
+                        <strong id="resultScore">0</strong>
+                        <span>/ 3</span>
+                    </div>
+                    <p>Skor Diagnostik</p>
+                </div>
+
+                <div class="result-details">
+                    <div class="eyebrow">YOUR RECOMMENDED PATH</div>
+                    <h2 id="resultPath">Junior Detective</h2>
+                    <p id="resultDescription"></p>
+
+                    <div class="result-recommendation" id="resultRecommendation"></div>
+                </div>
+
+            </div>
+
+            <div class="path-selector">
+                <h3>Pilih Jalur Belajarmu</h3>
+                <p>Kamu dapat memilih rekomendasi atau mencoba jalur lainnya.</p>
+
+                <div class="path-grid">
+
+                    <button class="path-card" data-path="junior" onclick="selectPath('junior')">
+                        <span class="path-emoji">🔎</span>
+                        <h3>Junior Detective</h3>
+                        <small>Perlu Bimbingan</small>
+                        <p>Penjelasan sederhana, contoh konkret, dan petunjuk lengkap.</p>
+                    </button>
+
+                    <button class="path-card" data-path="investigator" onclick="selectPath('investigator')">
+                        <span class="path-emoji">🧩</span>
+                        <h3>Network Investigator</h3>
+                        <small>Berkembang</small>
+                        <p>Panduan bertahap dan tantangan tingkat menengah.</p>
+                    </button>
+
+                    <button class="path-card" data-path="analyst" onclick="selectPath('analyst')">
+                        <span class="path-emoji">🛡️</span>
+                        <h3>Cyber Analyst</h3>
+                        <small>Mahir</small>
+                        <p>Analisis kasus dan pemecahan masalah mandiri.</p>
+                    </button>
+
+                </div>
+
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="showPage('hub')">
+                        Masuk ke Mission Hub →
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- MISSION HUB -->
+        <section class="page" id="hub">
+
+            <div class="page-heading">
+                <div class="eyebrow">MISSION CONTROL CENTER</div>
+                <h1>Mission <span class="gradient-text">Hub</span></h1>
+                <p>Pilih misi dan selesaikan seluruh investigasi untuk menjadi Cyber Detective.</p>
+            </div>
+
+            <div class="dashboard-summary">
+
+                <div class="summary-card">
+                    <span>◈</span>
+                    <div>
+                        <strong id="hubCompleted">0 / 4</strong>
+                        <small>Misi Selesai</small>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <span>★</span>
+                    <div>
+                        <strong id="hubScore">0</strong>
+                        <small>Total Poin Misi</small>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <span>⌕</span>
+                    <div>
+                        <strong id="hubPath">Belum dipilih</strong>
+                        <small>Jalur Belajar</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="overall-progress-card">
+                <div class="progress-heading">
+                    <strong>Investigation Progress</strong>
+                    <span id="overallProgressText">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="overallProgress"></div>
+                </div>
+            </div>
+
+            <div class="mission-grid">
+
+                <article class="mission-card" id="missionCard0">
+                    <div class="mission-top">
+                        <span class="mission-number">MISSION 01</span>
+                        <span class="mission-status" id="status0">BELUM SELESAI</span>
+                    </div>
+                    <div class="mission-icon">🌐</div>
+                    <h3>Network Identification</h3>
+                    <p>Kenali perangkat jaringan komputer dan pahami fungsi masing-masing perangkat.</p>
+                    <div class="mission-meta">4 Tantangan • Perangkat Jaringan</div>
+                    <button class="btn btn-primary btn-block" onclick="openMission(0)">Buka Misi →</button>
+                </article>
+
+                <article class="mission-card" id="missionCard1">
+                    <div class="mission-top">
+                        <span class="mission-number">MISSION 02</span>
+                        <span class="mission-status" id="status1">BELUM SELESAI</span>
+                    </div>
+                    <div class="mission-icon">📡</div>
+                    <h3>Network Connection</h3>
+                    <p>Pelajari koneksi kabel, nirkabel, dan bagaimana data berpindah antarperangkat.</p>
+                    <div class="mission-meta">4 Tantangan • Koneksi Jaringan</div>
+                    <button class="btn btn-primary btn-block" onclick="openMission(1)">Buka Misi →</button>
+                </article>
+
+                <article class="mission-card" id="missionCard2">
+                    <div class="mission-top">
+                        <span class="mission-number">MISSION 03</span>
+                        <span class="mission-status" id="status2">BELUM SELESAI</span>
+                    </div>
+                    <div class="mission-icon">🎣</div>
+                    <h3>Phishing Investigation</h3>
+                    <p>Selidiki pesan dan tautan mencurigakan serta tentukan tindakan yang tepat.</p>
+                    <div class="mission-meta">4 Tantangan • Keamanan Internet</div>
+                    <button class="btn btn-primary btn-block" onclick="openMission(2)">Buka Misi →</button>
+                </article>
+
+                <article class="mission-card" id="missionCard3">
+                    <div class="mission-top">
+                        <span class="mission-number">MISSION 04</span>
+                        <span class="mission-status" id="status3">BELUM SELESAI</span>
+                    </div>
+                    <div class="mission-icon">🔐</div>
+                    <h3>Digital Protection</h3>
+                    <p>Pelajari cara menjaga akun, data pribadi, dan identitas digital.</p>
+                    <div class="mission-meta">4 Tantangan • Perlindungan Digital</div>
+                    <button class="btn btn-primary btn-block" onclick="openMission(3)">Buka Misi →</button>
+                </article>
+
+            </div>
+
+            <div class="hub-footer">
+                <button class="btn btn-outline" onclick="showPage('result')">⇄ Ganti Jalur Belajar</button>
+                <button class="btn btn-primary" onclick="openFinalEvaluation()">Lanjut ke Evaluasi Akhir →</button>
+            </div>
+
+        </section>
+
+        <!-- MISSION PAGE -->
+        <section class="page" id="mission">
+
+            <div class="mission-header">
+                <button class="back-button" onclick="showPage('hub')">← Mission Hub</button>
+                <span class="eyebrow" id="missionEyebrow">MISSION 01</span>
+            </div>
+
+            <div class="mission-title-area">
+                <div class="mission-large-icon" id="missionIcon">🌐</div>
+                <div>
+                    <h1 id="missionTitle">Network Identification</h1>
+                    <p id="missionSubtitle"></p>
+                </div>
+            </div>
+
+            <div class="mission-learning-path">
+                <div>
+                    <span>YOUR LEARNING PATH</span>
+                    <strong id="missionPathName">Junior Detective</strong>
+                </div>
+                <button class="btn btn-outline btn-small" onclick="showPage('result')">
+                    Ganti Jalur
+                </button>
+            </div>
+
+            <div class="mission-content-grid">
+
+                <div class="learning-panel">
+
+                    <div class="panel-heading">
+                        <span>📚</span>
+                        <div>
+                            <h3>Materi Pembelajaran</h3>
+                            <small>Pelajari sebelum melakukan investigasi</small>
+                        </div>
+                    </div>
+
+                    <div id="missionMaterial"></div>
+
+                    <div class="hint-box" id="missionHint">
+                        <strong>💡 Petunjuk Belajar</strong>
+                        <p id="missionHintText"></p>
+                    </div>
+
+                </div>
+
+                <div class="activity-panel">
+
+                    <div class="activity-heading">
+                        <div>
+                            <span class="eyebrow">INVESTIGATION TASK</span>
+                            <h3>Aktivitas Misi</h3>
+                        </div>
+                        <span class="activity-count" id="missionQuestionCount">01 / 04</span>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="missionProgress"></div>
+                    </div>
+
+                    <div class="task-description" id="taskDescription"></div>
+
+                    <div class="question-card mission-question-card">
+                        <div class="question-number" id="missionQuestionNumber">CHALLENGE 01</div>
+
+                        <div class="scenario-box" id="missionScenario" hidden></div>
+
+                        <h3 id="missionQuestion">Pertanyaan aktivitas.</h3>
+
+                        <div class="answer-options" id="missionOptions"></div>
+
+                        <div class="feedback-box" id="missionFeedback" hidden></div>
+
+                        <div class="hint-action">
+                            <button class="text-button" onclick="showMissionHint()">
+                                💡 Minta Petunjuk
+                            </button>
+                        </div>
+
+                        <div class="question-actions">
+                            <button class="btn btn-outline" id="missionPrevious" onclick="previousMissionQuestion()">
+                                ← Sebelumnya
+                            </button>
+                            <button class="btn btn-primary" id="missionNext" onclick="nextMissionQuestion()" disabled>
+                                Periksa Jawaban →
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FINAL EVALUATION -->
+        <section class="page" id="final">
+
+            <div class="page-heading">
+                <div class="eyebrow">FINAL INVESTIGATION</div>
+                <h1>Final <span class="gradient-text">Evaluation</span></h1>
+                <p>Gabungkan pengetahuan dari empat misi untuk menyelesaikan kasus akhir.</p>
+            </div>
+
+            <div class="final-warning" id="finalWarning">
+                <span>🔒</span>
+                <div>
+                    <strong>Empat misi belum semuanya selesai.</strong>
+                    <p>Selesaikan seluruh misi terlebih dahulu sebelum mengerjakan evaluasi akhir.</p>
+                    <button class="btn btn-primary btn-small" onclick="showPage('hub')">Kembali ke Mission Hub</button>
+                </div>
+            </div>
+
+            <div class="final-assessment" id="finalAssessment" hidden>
+
+                <div class="final-case-card">
+                    <span class="eyebrow">SPECIAL CASE / 001</span>
+                    <h2>Digital Network Investigation</h2>
+                    <p>
+                        Sebuah sekolah sedang menyiapkan jaringan komputer baru.
+                        Pada saat yang sama, beberapa siswa menerima pesan digital
+                        yang mencurigakan. Sebagai detektif siber, selesaikan empat
+                        tantangan berikut untuk membantu sekolah menjaga jaringan
+                        dan keamanan data.
+                    </p>
+                </div>
+
+                <div class="assessment-top">
+                    <span id="finalCounter">PERTANYAAN 01 / 08</span>
+                    <span id="finalProgressText">0% selesai</span>
+                </div>
+
+                <div class="progress-track">
+                    <div class="progress-fill" id="finalProgress"></div>
+                </div>
+
+                <div class="question-card">
+
+                    <div class="question-number" id="finalNumber">CASE 01</div>
+                    <h2 id="finalQuestion">Pertanyaan evaluasi.</h2>
+
+                    <div class="scenario-box" id="finalScenario" hidden></div>
+
+                    <div class="answer-options" id="finalOptions"></div>
+
+                    <div class="feedback-box" id="finalFeedback" hidden></div>
+
+                    <div class="question-actions">
+                        <button class="btn btn-outline" onclick="previousFinalQuestion()" id="finalPrevious">
+                            ← Sebelumnya
+                        </button>
+                        <button class="btn btn-primary" onclick="nextFinalQuestion()" id="finalNext" disabled>
+                            Periksa Jawaban →
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- COMPLETION PAGE -->
+        <section class="page" id="completion">
+
+            <div class="completion-container">
+
+                <div class="completion-icon">🏆</div>
+
+                <div class="eyebrow">INVESTIGATION COMPLETED</div>
+
+                <h1>MISSION <span class="gradient-text">ACCOMPLISHED!</span></h1>
+
+                <p class="completion-description">
+                    Selamat! Kamu telah menyelesaikan seluruh rangkaian
+                    pembelajaran Cyber Detective.
+                </p>
+
+                <div class="completion-score-card">
+                    <div>
+                        <strong id="completionScore">0 / 8</strong>
+                        <span>Skor Evaluasi Akhir</span>
+                    </div>
+                    <div>
+                        <strong id="completionMission">4 / 4</strong>
+                        <span>Misi Diselesaikan</span>
+                    </div>
+                </div>
+
+                <div class="completion-feedback" id="completionFeedback"></div>
+
+                <div class="reflection-card">
+                    <h3>📝 Refleksi Pembelajaran</h3>
+                    <p>Jawab pertanyaan berikut untuk merefleksikan pengalaman belajarmu.</p>
+
+                    <label for="reflectionLearned">1. Apa hal paling penting yang kamu pelajari?</label>
+                    <textarea id="reflectionLearned" rows="3" placeholder="Tuliskan hal yang sudah kamu pahami..."></textarea>
+
+                    <label for="reflectionDifficult">2. Materi atau bagian mana yang masih sulit dipahami?</label>
+                    <textarea id="reflectionDifficult" rows="3" placeholder="Tuliskan bagian yang masih ingin kamu pelajari..."></textarea>
+
+                    <label for="reflectionAction">3. Apa tindakan yang akan kamu lakukan untuk menjaga keamanan digital?</label>
+                    <textarea id="reflectionAction" rows="3" placeholder="Tuliskan tindakanmu..."></textarea>
+
+                    <button class="btn btn-primary btn-block" onclick="saveReflection()">
+                        Simpan Refleksi
+                    </button>
+
+                    <div id="reflectionMessage" class="reflection-message"></div>
+                </div>
+
+                <div class="completion-actions">
+                    <button class="btn btn-outline" onclick="showPage('hub')">Kembali ke Mission Hub</button>
+                    <button class="btn btn-primary" onclick="printReport()">Cetak Hasil Pembelajaran</button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="main-footer">
+            <span>CYBER DETECTIVE © 2026</span>
+            <span>INFORMATICS LEARNING MEDIA • GRADE VIII</span>
+        </footer>
+
+    </main>
+
+    <!-- PATH SWITCHER -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+</body>
+</html>
