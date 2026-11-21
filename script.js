@@ -1700,17 +1700,21 @@ function renderMission() {
 
     }
 
-    getElement("missionPrevious").disabled =
-        currentMissionQuestion === 0;
+    
+getElement("missionPrevious").disabled =
+    currentMissionQuestion === 0;
 
-    getElement("missionNext").disabled =
-        !checked;
+// Tombol aktif jika peserta sudah memilih jawaban
+getElement("missionNext").disabled =
+    answer === null;
 
-    getElement("missionNext").textContent =
-        currentMissionQuestion === 3
+// Atur tulisan tombol sesuai tahap pengerjaan
+getElement("missionNext").textContent =
+    !checked
+        ? "Periksa Jawaban →"
+        : currentMissionQuestion === 3
             ? "Selesaikan Misi ✓"
             : "Selanjutnya →";
-
 }
 
 
