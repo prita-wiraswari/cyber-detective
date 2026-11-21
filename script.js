@@ -2020,14 +2020,16 @@ function renderFinalQuestion() {
     getElement("finalPrevious").disabled =
         currentFinalIndex === 0;
 
+
     getElement("finalNext").disabled =
-        !checked;
+    answer === null;
 
     getElement("finalNext").textContent =
-        currentFinalIndex === 7
+    !checked
+        ? "Periksa Jawaban →"
+        : currentFinalIndex === 7
             ? "Selesaikan Evaluasi ✓"
             : "Selanjutnya →";
-
 }
 
 
